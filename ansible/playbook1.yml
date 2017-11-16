@@ -1,0 +1,45 @@
+---
+
+- hosts: all
+  user: root
+  vars_prompt:
+  - name: http #bianlinag mingc 
+    prompt: please enter something:
+    private: no #display connect
+  task:
+  - name: test action
+    action: yum name=httpd state=installed #one  acion
+  - name: configure apache
+    copy: src=files/httpd.conf dest=/etc/httpd/config/httpd.conf #two 模块名
+  - name: restart apache
+    service:
+      name: httpd
+      state: restarted #three 格式写法
+  tasks:
+    - name: install memcached
+      yum: name=memcached state=installed
+    - name: set memcached size ##设置变量，将内存的4分之1
+      set_fact: memcached_size="{{ansible_memtotal_mb/4}}" 
+    - name: templete configure files
+      templete: src=templete.j2 dest=/etc/foo.configure
+      notify:#通知必须有，不然handler不会执行
+        - restart memcached #调用
+        - restart apache
+  handlers:
+    - name: restart memcached
+      service: name=memcached state=restarted
+    - name: restart apache
+      service: name=httpd state=restarted
+
+- hosts: all
+  user: root      
+  vars:
+
+  task:
+    - name: stop memcached
+      service: name=memcached state=stopped
+    - name: remove memcached
+      command: rpm -e memcached --nodeps
+  handlers:
+    - name: restart memcached
+      service: name=
