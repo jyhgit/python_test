@@ -21,7 +21,7 @@ from django.conf.urls import include
 
 from web.views import index,login,list
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    #url(r'^admin/', admin.site.urls),
     #url 对应- 函数
     url(r'^index/', index),
     url(r'^login/',login),

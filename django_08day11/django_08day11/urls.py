@@ -27,5 +27,5 @@ urlpatterns = [
     # file -- funcation
     #url(r'^web/',include('web.urls')),
     url(r'^web/',include('web.urls')),
-    url(r'^adminx/',include('adminx.urls'))
+    #url(r'^adminx/',include('adminx.urls'))
 ]
