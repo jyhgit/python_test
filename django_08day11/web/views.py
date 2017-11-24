@@ -32,7 +32,7 @@ def Delete(request,id):#删除时，传入id即可
 def Update(request,id,hostname): #更新数据库
     #更新单条数据
     '''
-    obj = Asset.objects.get(id=id)
+    obj = Asset.objects.get(id=id) #get只能获取一条数据，只要获取不到就报错
     obj.hostname = hostname
     obj.save()
     '''
@@ -40,7 +40,7 @@ def Update(request,id,hostname): #更新数据库
     return HttpResponse('ok')
 
 def Get(request,hostname):
-    assetlist = Asset.objects.filter(hostname__contains=hostname)
+    assetlist = Asset.objects.filter(hostname__contains=hostname) #fileter 获取多条数据，没有数据不会报错。而且与get获取的类型不一样，get获取到一个对象，filter获取多个对象的集合
     #for item in assetlist:#循环列出id
     #    print item.id
     #print assetlist
@@ -48,7 +48,7 @@ def Get(request,hostname):
     #alldata = Asset.objects.all() #所有数据
     #print alldata.query #SELECT `web_asset`.`id`, `web_asset`.`hostname`, `web_asset`.`create_date`, `web_asset`.`update_date` FROM `web_asset`
 
-    alldata = Asset.objects.all().values('id','hostname') #指定字段
+    alldata = Asset.objects.all().values('id','hostname') #映射字段，返回指定字段
     print alldata
     print alldata.query
 
