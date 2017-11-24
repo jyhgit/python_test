@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 # Create your models here.
+<<<<<<< Updated upstream
 class usertype(models.Model):
     name = models.CharField(max_length=20)
     def __str__(self):
@@ -47,3 +48,12 @@ class Temp(models.Model):
         (u'3',u'超级管理员')
     }
     usertype2 = models.CharField(max_length=20,choices = GENDER_CHOICE)
+=======
+class UserInfo(models.Model):
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)
+    Gender = models.BooleanField(default=False)#性别，布尔型
+    Age = models.IntegerField(default='18') #整型
+    memo = models.TextField(default='xxx') # 文本
+    CreateDate = models.DateTimeField(default='20171118')
+>>>>>>> Stashed changes
