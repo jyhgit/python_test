@@ -12,7 +12,7 @@ class UserInfo(models.Model):
     username = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
     Gender = models.BooleanField(default=False)
-    Age = models.IntegerField(default=19)
+    Age = models.IntegerField(default=20)
     memo = models.TextField(default='xxx')
     Createdate = models.DateTimeField(default='2017-11-19 15:32:00')
     address = models.CharField(max_length=100)
@@ -55,3 +55,6 @@ class UserInfo(models.Model):
     Age = models.IntegerField(default='18') #整型
     memo = models.TextField(default='xxx') # 文本
     CreateDate = models.DateTimeField(default='2017-11-18 00:22:22')
+class Test(models.Model):
+    name = models.CharField(max_length=30)
+    Age = models.IntegerField(default=23)
