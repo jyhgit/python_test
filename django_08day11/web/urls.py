@@ -17,7 +17,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from web.views import index,login,list
+from web.views import index,login,list,Add,Delete
 urlpatterns = [
    # url(r'^admin/', admin.site.urls),
     #url 对应- 函数
