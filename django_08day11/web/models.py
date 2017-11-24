@@ -54,4 +54,4 @@ class UserInfo(models.Model):
     Gender = models.BooleanField(default=False)#性别，布尔型
     Age = models.IntegerField(default='18') #整型
     memo = models.TextField(default='xxx') # 文本
-    CreateDate = models.DateTimeField(default='20171118')
+    CreateDate = models.DateTimeField(default='2017-11-18 00:22:22')
