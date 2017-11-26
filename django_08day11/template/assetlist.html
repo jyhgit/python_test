@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>assetlist</title>
+</head>
+<body>
+<h1>{{user}}</h1>
+<table border="1">
+    {% for item in data %}
+    <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.hostname|upper}}</td>
+        <td>{{item.create_date|date:"Y-m-d H:i:s"}}</td>
+        <td>{{item.update_date|date:"Y-m-d H:i:s"}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+    {% if user %}
+        <h2>zhen</h2>
+    {% else %}
+        <h1>jia</h1>
+    {% endif %}
+
+    {% ifequal user 'jiayanhua' %}
+        <h3>jiayanhua</h3>
+    {% else %}
+        <h3>非 jiayanhua</h3>
+    {% endifequal %}
+</body>
+</html>

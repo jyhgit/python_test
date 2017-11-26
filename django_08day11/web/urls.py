@@ -17,7 +17,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from web.views import index,login,list,Add,Delete,Update,Get
+from web.views import index,login,list,Add,Delete,Update,Get,AssetList
 urlpatterns = [
    # url(r'^admin/', admin.site.urls),
     #url 对应- 函数
@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^delete/(?P<id>\d*)/$',Delete),
     url(r'^update/(?P<id>\d*)/(?P<hostname>\w*)/$',Update),
     url(r'^get/(?P<hostname>\w*)/$',Get),
+    url(r'^assetlist/$',AssetList),
 
 
 ]

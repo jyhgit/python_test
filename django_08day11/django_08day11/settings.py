@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Django settings for django_08day11 project.
 
@@ -24,8 +26,14 @@ SECRET_KEY = 'evzzah!a2tl^opplql@$y3r)bu6w01fbiyqt-*&7*8-juny*o)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#print BASE_DIR
+#TEMPLATE_DIRS = (
 
+    #os.path.join(BASE_DIR,'template'),#join拼接，当前程序路径与后面参数
+#)
+#print TEMPLATE_DIRS
 ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -55,7 +63,7 @@ ROOT_URLCONF = 'django_08day11.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'template')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

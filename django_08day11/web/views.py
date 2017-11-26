@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from web.models import Asset
+from django.shortcuts import render_to_response
 #from     django.db.models.manager.Manager import *
 
 # Create your views here.
@@ -59,3 +60,8 @@ def Get(request,hostname):
     alldata = Asset.objects.all().order_by('-id') #倒叙
     '''
     return HttpResponse('ok')
+
+def AssetList(request):
+    assetlist = Asset.objects.all()
+    result = render_to_response('assetlist.html',{'data':assetlist,'user':"jiayanhua"}) #将数据嵌入到html
+    return result
