@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <title>register</title>
+</head>
+<body>
+    <form action="/web/register/" method="POST">
+        <!--
+        username:{{form.username}}
+        <br/>
+        email:{{form.email}}
+        <br/>
+        -->
+        {{form.as_table}}<!-- 自动填充input 表单 -->
+        <input type="submit" value="提交"><span style="color:red;">{{ status }}</span>
+    </form>
+</body>
+</html>

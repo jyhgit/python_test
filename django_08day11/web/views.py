@@ -3,18 +3,60 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.http.response import HttpResponse
-from web.models import Asset
+from web.models import Asset,UserInfo
 from django.shortcuts import render_to_response
+from web.forms import RegisterForm
 #from     django.db.models.manager.Manager import *
 
 # Create your views here.
-def login():
-    return "login"
+def Register(request):
+    registerForm = RegisterForm()
+    if request.method == 'POST':#如果post提交数据
+        form = RegisterForm(request.POST) #将获取数据赋值给form
+        if form.is_valid():#验证有效性
+            data = form.cleaned_data
+            #data2 = form.
+            print data
+        else:#如果无效，返回form错误方法
+            #print form.errors.as_json()
+            #print type(form.errors)
+            #django.forms.utils.ErrorDict
+            temp = form.errors.as_data()
+            print temp['email'][0].messages[0]
+            #django.core.exceptions.ValidationError temp['email'][0]
+            #print type(temp['email'][0])
+            #print temp.['email'][0]['message']
+    #else:#如果普通访问，返回注册页面
+    return render_to_response('register.html', {'form':registerForm})
+'''
+    if request.method == "POST": #跨站请求宝403
+        user = request.POST.get('username',None)
+        pwd = request.POST.get('password',None)
+        #print user,pwd
+        result = UserInfo.objects.filter(username=user,password=pwd).count()
+        if result == 1:
+            return HttpResponse("login sucess")
+        else:
+            return render_to_response('login.html',{'status':'用户名密码错误'})
+    else:
+        return render_to_response('login.html')
+'''
+def Login(request):
+    if request.method == "POST": #跨站请求宝403
+        user = request.POST.get('username',None)
+        pwd = request.POST.get('password',None)
+        #print user,pwd
+        result = UserInfo.objects.filter(username=user,password=pwd).count()
+        if result == 1:
+            return HttpResponse("login sucess")
+        else:
+            return render_to_response('login.html',{'status':'用户名密码错误'})
+    else:
+        return render_to_response('login.html')
+
 def index(request):#django  固定格式，接受http请求
     return HttpResponse('index') #同上固定格式，返回http
 
-def login(request):
-    return HttpResponse('login')
 
 def list(request,name,id):#传递参数与urls模板一致，多个需要按顺序
     print name,id

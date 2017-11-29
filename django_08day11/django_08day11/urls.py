@@ -19,7 +19,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
 
-from web.views import index,login,list
+from web.views import index,Login,list
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url

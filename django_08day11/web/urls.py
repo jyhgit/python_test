@@ -17,12 +17,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from web.views import index,login,list,Add,Delete,Update,Get,AssetList
+from web.views import index,Login,list,Add,Delete,Update,Get,AssetList,Register
 urlpatterns = [
-   # url(r'^admin/', admin.site.urls),
+    #url(r'^admin/', admin.site.urls),
     #url 对应- 函数
     url(r'^index/', index),
-    url(r'^login/',login),
+    url(r'^login/',Login),
     #url(r'^list/(\d*)',list),
     url(r'^list/(?P<name>\d*)/(?P<id>\d*)/$',list),#P,view,django
     url(r'^list/(?P<name>\d*)/$', list,{'id':222}),  # P,view
@@ -31,6 +31,5 @@ urlpatterns = [
     url(r'^update/(?P<id>\d*)/(?P<hostname>\w*)/$',Update),
     url(r'^get/(?P<hostname>\w*)/$',Get),
     url(r'^assetlist/$',AssetList),
-
-
+    url(r'^register/$',Register),
 ]
